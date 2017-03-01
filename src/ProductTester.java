@@ -23,6 +23,8 @@ class ProductTester {
        String expireDate;
        ArrayList<FoodProduct> list = new ArrayList<FoodProduct>();
        
+       System.out.print("running"); //chekcing to see where program is getting stuck
+       
        File inventory = new File("C:\\Program Files\\Java\\inventory.txt");
        Scanner inputFile = new Scanner(inventory);
        name = inputFile.nextLine();
@@ -31,8 +33,8 @@ class ProductTester {
        UPC = in.nextLine();
        expireDate = in.nextLine();
        FoodProduct inventoryItem = new FoodProduct(name, quant, price, UPC, expireDate);
-               
-       
+       list.add(inventoryItem);
+                     
        System.out.println("Welcome to the Foods B Us Inventory Management System.");
        System.out.println("The inventory file inventory.txt has been successfully imported.");
        System.out.println("");
