@@ -21,17 +21,18 @@ class ProductTester {
        double price;
        String UPC;
        String expireDate;
+       String userFile;
        ArrayList<FoodProduct> list = new ArrayList<FoodProduct>();
        
        System.out.print("running"); //chekcing to see where program is getting stuck
        
        File inventory = new File("C:\\Program Files\\Java\\inventory.txt");
        Scanner inputFile = new Scanner(inventory);
-       name = inputFile.nextLine();
-       quant = in.nextInt();
-       price = in.nextDouble();
-       UPC = in.nextLine();
-       expireDate = in.nextLine();
+       name = inputFile.next();
+       quant = inputFile.nextInt();
+       price = inputFile.nextDouble();
+       UPC = inputFile.nextLine();
+       expireDate = inputFile.nextLine();
        FoodProduct inventoryItem = new FoodProduct(name, quant, price, UPC, expireDate);
        list.add(inventoryItem);
                      
@@ -67,6 +68,12 @@ class ProductTester {
                 System.out.print("");
                 FoodProduct newItem = new FoodProduct(name, quant, price, UPC, expireDate);
                 list.add(newItem);
+                
+                //imports new file
+                System.out.print("Enter File Name to Import: ");
+                userFile = in.nextLine();
+                
+                File addItem = new File("C:\\Desktop\\ " + userFile);
                                            
             }else if(userInput.equals("p")) { //print inventory sorted by name
                 for(int i=0; i < list.size(); i++) {
