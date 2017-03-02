@@ -30,9 +30,9 @@ class ProductTester {
        Scanner inputFile = new Scanner(inventory);
        while(inputFile.hasNext()) {
             name = inputFile.next();
-            quant = inputFile.nextInt();
-            price = inputFile.nextDouble();
             UPC = inputFile.next();
+            quant = inputFile.nextInt();
+            price = inputFile.nextDouble();          
             expireDate = inputFile.next();
             FoodProduct inventoryItem = new FoodProduct(name, quant, price, UPC, expireDate);
             list.add(inventoryItem);
@@ -44,13 +44,13 @@ class ProductTester {
        System.out.println("");
        while(continueRunning == true) {           
            System.out.println("Please Choose an option from the following menu: ");
-           System.out.println(" U: Upload product information for a delivery");
-           System.out.println(" P: Print current inventory sorted by name");
-           System.out.println(" E: Lisst the current inventory sorted by expiration date");
-           System.out.println(" S: Search for an item by product name");
-           System.out.println(" D: Decrement the quantity for a specific item");
-           System.out.println(" R: Remove/discontinue an item");
-           System.out.println(" Q: Quit the System");
+           System.out.println("  U: Upload product information for a delivery");
+           System.out.println("  P: Print current inventory sorted by name");
+           System.out.println("  E: Lisst the current inventory sorted by expiration date");
+           System.out.println("  S: Search for an item by product name");
+           System.out.println("  D: Decrement the quantity for a specific item");
+           System.out.println("  R: Remove/discontinue an item");
+           System.out.println("  Q: Quit the System");
            System.out.print("Enter Choice: ");
            
            userInput = in.nextLine().toLowerCase(); 
@@ -58,30 +58,27 @@ class ProductTester {
                 continueRunning = false;
                 System.exit(0);
             }else if(userInput.equals("u")) { //upload product info
-                System.out.print("Enter Product Name: ");
-                name = in.nextLine();
-                System.out.print("Enter Product Quantity: ");
-                quant = in.nextInt();
-                System.out.print("Enter Product Price: ");
-                price = in.nextDouble();
-                System.out.print("Enter Product UPC: ");
-                UPC = in.nextLine();
-                System.out.print("Enter Expire Date: ");
-                expireDate = in.nextLine();
-                System.out.print("");
-                FoodProduct newItem = new FoodProduct(name, quant, price, UPC, expireDate);
-                list.add(newItem);
                 
-                File addItem = new File("C:\\Desktop\\delivery.txt");
+                File addItem = new File("C:\\Users\\cjjoh_000\\Desktop\\delivery.txt");
                 Scanner deliverFile = new Scanner(addItem);
+                while(deliverFile.hasNext()) {
+                    name = deliverFile.next();
+                    UPC = deliverFile.next();
+                    quant = deliverFile.nextInt();
+                    price = deliverFile.nextDouble();               
+                    expireDate = deliverFile.next();
+                    FoodProduct inventoryItem = new FoodProduct(name, quant, price, UPC, expireDate);
+                    list.add(inventoryItem);
+                }
+                System.out.println("delivery.txt file successfully added");
                                            
             }else if(userInput.equals("p")) { //print inventory sorted by name
                 for(int i=0; i < list.size(); i++) {
                     System.out.print((list.get(i)).getName());
-                    System.out.print(" " + (list.get(i)).getPrice());
-                    System.out.print(" " + (list.get(i)).getQuantity());
-                    System.out.print(" " + (list.get(i)).getExpireDate());
-                    System.out.println(" " + (list.get(i)).getUPC());
+                    System.out.print(" Price: " + (list.get(i)).getPrice());
+                    System.out.print(" Quantity: " + (list.get(i)).getQuantity());
+                    System.out.print(" Expiration Date: " + (list.get(i)).getExpireDate());
+                    System.out.println(" UPC: " + (list.get(i)).getUPC());
                 }
             }else if(userInput.equals("e")) { //print inventory sorted by exp. date
             
