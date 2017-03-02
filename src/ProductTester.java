@@ -87,6 +87,10 @@ class ProductTester {
             }else if(userInput.equals("d")) { //decrement quantity 
             
             }else if(userInput.equals("r")) { //remove/discontinue item
+                System.out.print("Enter name of product to remove: ");
+                String removeItem = in.nextLine();
+                list.remove(removeItem);
+                System.out.print("Item Removed");
             
             }
                     
