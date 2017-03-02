@@ -24,8 +24,6 @@ class ProductTester {
        String userFile;
        ArrayList<FoodProduct> list = new ArrayList<FoodProduct>();
        
-       System.out.print("running"); //chekcing to see where program is getting stuck
-       
        File inventory = new File("C:\\Program Files\\Java\\inventory.txt");
        Scanner inputFile = new Scanner(inventory);
        while(inputFile.hasNext()) {
@@ -83,13 +81,27 @@ class ProductTester {
             }else if(userInput.equals("e")) { //print inventory sorted by exp. date
             
             }else if(userInput.equals("s")) { //search for an item by name
+                System.out.print("Enter Name of search Item: ");
+                String findItem = in.nextLine();
+                FoodProduct tempFind = new FoodProduct(findItem, 0, 0, "", "");
+
+                if(list.contains(tempFind)) {
+                    System.out.println(tempFind);
+                } else
+                    System.out.println("Item Not Found");
             
             }else if(userInput.equals("d")) { //decrement quantity 
+                System.out.print("Enter Name of item to reduce quantity of: ");
+                String decItem = in.nextLine();
+                System.out.print("Number of items to remove: ");
+                int decQuantity = in.nextInt();
+                //Product.setQuantity(decItem);
             
             }else if(userInput.equals("r")) { //remove/discontinue item
                 System.out.print("Enter name of product to remove: ");
                 String removeItem = in.nextLine();
-                list.remove(removeItem);
+                FoodProduct temp = new FoodProduct(removeItem, 0, 0, "", "");
+                list.remove(temp);
                 System.out.print("Item Removed");
             
             }
