@@ -18,15 +18,31 @@ public class FoodProduct extends Product{
         this.UPC = UPC;
         this.expireDate = expireDate;
     }
+    /**
+     * 
+     * @param aUPC updates UPC to value contained in .txt file
+     */
     public void setUPC(String aUPC) {
         UPC = aUPC;
     }
+    /**
+     * 
+     * @param aExpireDate sets expireDate to value contained in .txt file
+     */
     public void setExpireDate(String aExpireDate) {
         expireDate = aExpireDate;
     }
+    /**
+     * 
+     * @return the string containing product expiration date
+     */
     public String getExpireDate() {
         return expireDate;
     }
+    /**
+     * 
+     * @return the int containing product UPC
+     */
     public String getUPC() {
         return UPC;
     }
