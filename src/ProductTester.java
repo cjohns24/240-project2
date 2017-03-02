@@ -28,13 +28,16 @@ class ProductTester {
        
        File inventory = new File("C:\\Program Files\\Java\\inventory.txt");
        Scanner inputFile = new Scanner(inventory);
-       name = inputFile.next();
-       quant = inputFile.nextInt();
-       price = inputFile.nextDouble();
-       UPC = inputFile.nextLine();
-       expireDate = inputFile.nextLine();
-       FoodProduct inventoryItem = new FoodProduct(name, quant, price, UPC, expireDate);
-       list.add(inventoryItem);
+       while(inputFile.hasNext()) {
+            name = inputFile.next();
+            quant = inputFile.nextInt();
+            price = inputFile.nextDouble();
+            UPC = inputFile.next();
+            expireDate = inputFile.next();
+            FoodProduct inventoryItem = new FoodProduct(name, quant, price, UPC, expireDate);
+            list.add(inventoryItem);
+       }
+       
                      
        System.out.println("Welcome to the Foods B Us Inventory Management System.");
        System.out.println("The inventory file inventory.txt has been successfully imported.");
@@ -69,15 +72,16 @@ class ProductTester {
                 FoodProduct newItem = new FoodProduct(name, quant, price, UPC, expireDate);
                 list.add(newItem);
                 
-                //imports new file
-                System.out.print("Enter File Name to Import: ");
-                userFile = in.nextLine();
-                
-                File addItem = new File("C:\\Desktop\\ " + userFile);
+                File addItem = new File("C:\\Desktop\\delivery.txt");
+                Scanner deliverFile = new Scanner(addItem);
                                            
             }else if(userInput.equals("p")) { //print inventory sorted by name
                 for(int i=0; i < list.size(); i++) {
-                    System.out.println((list.get(i)).getName());
+                    System.out.print((list.get(i)).getName());
+                    System.out.print(" " + (list.get(i)).getPrice());
+                    System.out.print(" " + (list.get(i)).getQuantity());
+                    System.out.print(" " + (list.get(i)).getExpireDate());
+                    System.out.println(" " + (list.get(i)).getUPC());
                 }
             }else if(userInput.equals("e")) { //print inventory sorted by exp. date
             
@@ -89,11 +93,6 @@ class ProductTester {
             
             }
                     
-       }
-       
-        
-       
-       
-       
+       }      
     }
 }
